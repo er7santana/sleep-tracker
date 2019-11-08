@@ -46,7 +46,7 @@ class SleepTrackerViewModel(
     private var tonight = MutableLiveData<SleepNight?>()
 
     private val nights = database.getAllNights()
-    val nighsString = Transformations.map(nights) { nights ->
+    val nightsString = Transformations.map(nights) { nights ->
         formatNights(nights, application.resources)
     }
 
