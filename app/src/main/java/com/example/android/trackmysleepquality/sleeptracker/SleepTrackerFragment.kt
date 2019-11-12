@@ -59,6 +59,16 @@ class SleepTrackerFragment : Fragment() {
         //Get a reference to the ViewModel associated with this fragment
         val sleepTrackerViewModel = ViewModelProviders.of(this, viewModelFactory).get(SleepTrackerViewModel::class.java)
 
+        val adapter = SleepNightAdapter()
+        binding.sleepList.adapter = adapter
+
+        sleepTrackerViewModel.nights.observe(this, Observer {
+            it?.let {
+                adapter.data = it
+            }
+        })
+
+
         binding.setLifecycleOwner(this)
         binding.sleepTrackerViewModel = sleepTrackerViewModel
 
